@@ -21,13 +21,13 @@
     </section>
 
     <section class="main-content">
-      
+      <!--
       <h2>Entire Spreadsheet</h2>
       <table id="statistics" class="table table-condensed table-striped"></table>
 
       <h2>Only 10 rows</h2>
       <table id="switch-hitters" class="table table-condensed table-striped"></table>
-      
+      -->
       <h2>Templating</h2>
         <ol id="hr">
           <script id="hr-template" type="text/x-handlebars-template">
@@ -46,8 +46,8 @@
               <p>Time End: {{cells.TimeEnd}}</p>
               <p>Address: {{cells.Address}}</p>
               <p>Google Map: {{cells.AddressLink}}</p>
-              <p>Image: {{cells.FeaturedImageUrl}}</p>
-              <p>Link: {{cells.LearnMoreLink}}</p>
+              <p>Image: <img src="{{cells.FeaturedImageUrl}}"></p>
+              <p><a href="{{cells.LearnMoreLink}}">Learn More</a></p>
               <p>City: {{cells.City}}</p>
               <p>Country: {{cells.Country}}</p>
             </li>
@@ -62,6 +62,7 @@
 
   <script type="text/javascript">
     var mySpreadsheet = 'https://docs.google.com/spreadsheets/d/1NptDuEELr9ZBcfXyd7B4CGFZ2oXjf8JFYpLCQXcc3aQ/edit#gid=0';
+    /*
     // Load an entire worksheet.
     $('#statistics').sheetrock({
       url: mySpreadsheet
@@ -72,13 +73,14 @@
       query: "select A,B,C,D,E",
       fetchSize: 10
     });
+    */
     // Compile the Handlebars template for HR leaders.
     var HRTemplate = Handlebars.compile($('#hr-template').html());
 
     // Load top five HR leaders.
     $('#hr').sheetrock({
       url: mySpreadsheet,
-      query: "select A,B,C,D,E,H,I,J,K,L,M",
+      query: "select A,B,C,D,E,H,I,J,K,L,M,O,P,Q,R,S",
       //fetchSize: 5,
       rowTemplate: HRTemplate
     });
