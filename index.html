@@ -22,6 +22,7 @@
     <section class="main-content">
       <p>Hello World!</p>
       <table id="statistics" class="table table-condensed table-striped"></table>
+      <table id="switch-hitters" class="table table-condensed table-striped"></table>
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/danielng188/LisbonMeetUps">Lisbonmeetups</a> is maintained by <a href="https://github.com/danielng188">danielng188</a>.</span>
       </footer>
@@ -37,7 +38,7 @@
     // Load top ten switch hitters.
     $('#switch-hitters').sheetrock({
       url: mySpreadsheet,
-      query: "select A,B,C,D,E,L order by L desc",
+      query: "select A,B,C,D,E,L order by B",
       fetchSize: 10
     });
   </script>
