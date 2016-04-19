@@ -27,7 +27,7 @@
 
       <h2>Only 10 rows</h2>
       <table id="switch-hitters" class="table table-condensed table-striped"></table>
-      -->
+      
       <h2>ALL EVENTS</h2>
         <ol id="allEvents">
           <script id="allEvents-template" type="text/x-handlebars-template">
@@ -53,7 +53,7 @@
             </li>
           </script>
         </ol>
-
+        -->
         <h2>THIS MONTH's EVENTS</h2>
         <ol id="monthEvents">
           <script id="monthEvents-template" type="text/x-handlebars-template">
@@ -125,7 +125,7 @@
       query: "select A,B,C,D,E",
       fetchSize: 10
     });
-    */
+    
     // Compile the Handlebars template for HR leaders.
     var allEventsTemplate = Handlebars.compile($('#allEvents-template').html());
 
@@ -136,8 +136,9 @@
       //fetchSize: 5,
       rowTemplate: allEventsTemplate
     });
-
+    */
     var monthEventsTemplate = Handlebars.compile($('#monthEvents-template').html());
+    //var n = Date.getMonth();
     $('#monthEvents').sheetrock({
       url: mySpreadsheet,
       query: "select A,B,C,D,E,H,I,J,K,L,M,O,P,Q,R,S where I = 4",
