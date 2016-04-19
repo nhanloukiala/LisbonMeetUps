@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sheetrock/1.0.1/dist/sheetrock.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.1.2/handlebars.min.js"></script>
     <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
@@ -14,18 +15,40 @@
   </head>
   <body>
     <section class="page-header">
-      <h1 class="project-name">Lisbonmeetups</h1>
+      <h1 class="project-name">Lisbon Meetups</h1>
       <h2 class="project-tagline">A website project that lists events in Lisbon</h2>
       <a href="https://github.com/danielng188/LisbonMeetUps" class="btn">View on GitHub</a>
     </section>
 
     <section class="main-content">
-      <h2>Entire Spreadsheets</h2>
+      <h2>Entire Spreadsheet</h2>
       <table id="statistics" class="table table-condensed table-striped"></table>
       <h2>Only 10 rows</h2>
       <table id="switch-hitters" class="table table-condensed table-striped"></table>
+
+      <h4>Templating</h4>
+        <ol id="hr">
+          <script id="hr-template" type="text/x-handlebars-template">
+            <li>
+              <strong>{{cells.Name}}</strong>,
+            </li>
+            <li>
+              {{cells.Category}}
+            </li>
+            <li>
+              {{cells.language}}
+            </li>
+            <li>
+              {{cells.Organizer}}
+            </li>
+            <li>
+              {{cells.Free}}
+            </li>
+          </script>
+        </ol>
+
       <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/danielng188/LisbonMeetUps">Lisbonmeetups</a> is maintained by <a href="https://github.com/danielng188">danielng188</a>.</span>
+        <span class="site-footer-owner"><a href="https://github.com/danielng188/LisbonMeetUps">Lisbonmeetups</a> is designed by <a href="https://github.com/danielng188">danielng188</a>.</span>
       </footer>
 
     </section>
@@ -41,6 +64,16 @@
       url: mySpreadsheet,
       query: "select A,B,C,D,E",
       fetchSize: 10
+    });
+    // Compile the Handlebars template for HR leaders.
+    var HRTemplate = Handlebars.compile($('#hr-template').html());
+
+    // Load top five HR leaders.
+    $('#hr').sheetrock({
+      url: mySpreadsheet,
+      query: "select A,C,D,E order by D desc",
+      //fetchSize: 5,
+      rowTemplate: HRTemplate
     });
 
   </script>
