@@ -63,15 +63,15 @@
   <script type="text/javascript">
     var mySpreadsheet = 'https://docs.google.com/spreadsheets/d/1NptDuEELr9ZBcfXyd7B4CGFZ2oXjf8JFYpLCQXcc3aQ/edit#gid=0';
     // Load an entire worksheet.
-    /*$('#statistics').sheetrock({
+    $('#statistics').sheetrock({
       url: mySpreadsheet
-    });*/
+    });
     // Load top ten switch hitters.
-    /*$('#switch-hitters').sheetrock({
+    $('#switch-hitters').sheetrock({
       url: mySpreadsheet,
       query: "select A,B,C,D,E",
       fetchSize: 10
-    });*/
+    });
     // Compile the Handlebars template for HR leaders.
     var HRTemplate = Handlebars.compile($('#hr-template').html());
 
