@@ -24,36 +24,12 @@
     </section>
 
     <section class="main-content">
-      <!--
-      <h2>Entire Spreadsheet</h2>
-      <table id="statistics" class="table table-condensed table-striped"></table>
 
-      <h2>Only 10 rows</h2>
-      <table id="switch-hitters" class="table table-condensed table-striped"></table>
-      -->
       <!--
       <h2>TODAY's EVENTS</h2>
         <ol id="todayEvents">
           <script id="todayEvents-template" type="text/x-handlebars-template">
-            <p>Name: <strong>{{cells.Name}}</strong></p>
-              <p>Category: {{cells.Category}}</p>
-              <p>Language: {{cells.Language}}</p>
-              <p>Organizer: {{cells.Organizer}}</p>
-              <p>Price: {{cells.Free}}</p>
-              <p>Day: {{cells.Day}}</p>
-              <p>Week: {{cells.Week}}</p>
-              <p>Week Number: {{cells.WeekNo}}</p>
-              <p>Month: {{cells.Month}}</p>
-              <p>Year: {{cells.Year}}</p>
-              <p>Date: {{cells.Date}}</p>
-              <p>Time: {{cells.TimeStart}} - {{cells.TimeEnd}}</p>
-              <p>Address: {{cells.Address}}</p>
-              <p>Google Map: {{cells.AddressLink}}</p>
-              <p>Image: <img src="{{cells.FeaturedImageUrl}}"></p>
-              <p><a href="{{cells.LearnMoreLink}}">Learn More</a></p>
-              <p>City: {{cells.City}}</p>
-              <p>Country: {{cells.Country}}</p>
-              <p>Current Date: {{cells.CurrentDate}}</p>
+
           </script>
         </ol>
       
@@ -61,28 +37,7 @@
       <table id="event-table" class="table table-condensed table-striped"></table>
         <ol id="monthEvents">
           <script id="monthEvents-template" type="text/x-handlebars-template">
-            <li>
-              <p>Name: <strong>{{cells.Name}}</strong></p>
-              <p>Category: {{cells.Category}}</p>
-              <p>Language: {{cells.Language}}</p>
-              <p>Organizer: {{cells.Organizer}}</p>
-              <p>Price: {{cells.Free}}</p>
-              <p>Day: {{cells.Day}}</p>
-              
-              <p>Week: {{cells.Week}}</p>
-              <p>Week Number: {{cells.WeekNo}}</p>
-              <p>Month: {{cells.Month}}</p>
-              <p>Year: {{cells.Year}}</p>
-              <p>Date: {{cells.Date}}</p>
-              <p>Time: {{cells.TimeStart}} - {{cells.TimeEnd}}</p>
-              <p>Address: {{cells.Address}}</p>
-              <p>Google Map: {{cells.AddressLink}}</p>
-              <p>Image: <img src="{{cells.FeaturedImageUrl}}"></p>
-              <p><a href="{{cells.LearnMoreLink}}">Learn More</a></p>
-              <p>City: {{cells.City}}</p>
-              <p>Country: {{cells.Country}}</p>
-              <p>Current Date: {{cells.CurrentDate}}</p>
-            </li>
+            
           </script>
         </ol>
       -->
@@ -91,38 +46,23 @@
       <table id="allEvents-table" class="table table-condensed table-striped"></table>
       -->
       <div style="overflow-x:auto;">
-      <table id="allEvents-table" class="table table-condensed table-striped">
-        <script id="allEvents-template" type="text/x-handlebars-template">
-        <tr>
-          <td><b>{{cells.Name}}</td>
-          <td><img class="displayed" src="{{cells.FeaturedImageUrl}}"></b></td>
-          <td class="auto-fit">{{cells.Category}}</td>
-          <td class="auto-fit">{{cells.Language}}</td>
-          <td class="auto-fit">{{cells.Organizer}}</td>
-          <td class="auto-fit">{{cells.Free}}</td>
-          <td class="auto-fit">{{cells.Date}}</td>
-          <td class="auto-fit">{{cells.TimeStart}}-{{cells.TimeEnd}}</td>
-          <td class="auto-fit"><a href="{{cells.LearnMoreLink}}">Learn More</a></td>
-        </tr>
-        </script>
-      </table>
-      </div>
-        <!--
-        <ol id="allEvents-table">
+        <table id="allEvents-table" class="table table-condensed table-striped">
           <script id="allEvents-template" type="text/x-handlebars-template">
-            <li>
-              <p>Name: <strong>{{cells.Name}}</strong></p>
-              <p>Category: {{cells.Category}}</p>
-              <p>Language: {{cells.Language}}</p>
-              <p>Organizer: {{cells.Organizer}}</p>
-              <p>Price: {{cells.Free}}</p>
-              <p>Date: {{cells.Date}}</p>
-              <p>Time: {{cells.TimeStart}} - {{cells.TimeEnd}}</p>
-              <p>Address: {{cells.Address}}</p>
-              <p>Image: <img src="{{cells.FeaturedImageUrl}}"></p>
-              <p><a href="{{cells.LearnMoreLink}}">Learn More</a></p>
+            <tr>
+              <td class="auto-fit">{{cells.Date}}</td>
+              <td class="auto-fit">{{cells.Start}}-{{cells.End}}</td>
+              <td><b>{{cells.Name}}</td>
+              <td><img class="displayed" src="{{cells.FeaturedImageUrl}}"></b></td>
+              <td class="auto-fit">{{cells.Category}}</td>
+              <td class="auto-fit">{{cells.Language}}</td>
+              <td class="auto-fit">{{cells.Organizer}}</td>
+              <td class="auto-fit">{{cells.Free}}</td>
+              <td class="auto-fit"><a href="{{cells.LearnMoreLink}}">Learn More</a></td>
+            </tr>
           </script>
-        </ol>
+        </table>
+      </div>
+
       -->
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/danielng188/LisbonMeetUps">Lisbonmeetups</a> is designed by <a href="https://github.com/danielng188">danielng188</a>.</span>
@@ -133,14 +73,6 @@
   <script type="text/javascript">
     var mySpreadsheet = 'https://docs.google.com/spreadsheets/d/1NptDuEELr9ZBcfXyd7B4CGFZ2oXjf8JFYpLCQXcc3aQ/edit#gid=0';
  
-    // Load all events into table
-    /*
-    $('#allEvents-table').sheetrock({
-      url: mySpreadsheet,
-      query: "select A,B,C,D,E,K,L,M,N,P order by K",
-      //fetchSize: 5,
-    });
-    */
     var allEventsTemplate = Handlebars.compile($('#allEvents-template').html());
     
     $('#allEvents-table').sheetrock({
