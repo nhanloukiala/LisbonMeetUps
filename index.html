@@ -59,6 +59,8 @@
         </ol>
 
       <h2>THIS MONTH's EVENTS</h2>
+      <table id="event-table" class="table table-condensed table-striped"></table>
+        <!--
         <ol id="monthEvents">
           <script id="monthEvents-template" type="text/x-handlebars-template">
             <li>
@@ -68,12 +70,13 @@
               <p>Organizer: {{cells.Organizer}}</p>
               <p>Price: {{cells.Free}}</p>
               <p>Day: {{cells.Day}}</p>
-              <!--
+              
               <p>Week: {{cells.Week}}</p>
               <p>Week Number: {{cells.WeekNo}}</p>
               <p>Month: {{cells.Month}}</p>
               <p>Year: {{cells.Year}}</p>
               -->
+              <!--
               <p>Date: {{cells.Date}}</p>
               <p>Time: {{cells.TimeStart}} - {{cells.TimeEnd}}</p>
               <p>Address: {{cells.Address}}</p>
@@ -82,13 +85,11 @@
               <p><a href="{{cells.LearnMoreLink}}">Learn More</a></p>
               <p>City: {{cells.City}}</p>
               <p>Country: {{cells.Country}}</p>
-              <!--
               <p>Current Date: {{cells.CurrentDate}}</p>
-              -->
             </li>
           </script>
         </ol>
-
+        -->
       <h2>ALL EVENTS</h2>
         <ol id="allEvents">
           <script id="allEvents-template" type="text/x-handlebars-template">
@@ -133,11 +134,7 @@
       url: mySpreadsheet
     });
     // Load top ten switch hitters.
-    $('#switch-hitters').sheetrock({
-      url: mySpreadsheet,
-      query: "select A,B,C,D,E",
-      fetchSize: 10
-    });
+    
     */
     // Load all events
     var allEventsTemplate = Handlebars.compile($('#allEvents-template').html());
@@ -149,9 +146,20 @@
       rowTemplate: allEventsTemplate
     });
 
+    
     // Load current month's events
-    var monthEventsTemplate = Handlebars.compile($('#monthEvents-template').html());
+    var d = new Date;
+    //var currentDate = d.getDate();
+    var currentMonth = d.getMonth() + 1;
+    var currentYear = d.getFullYear();
+    $('#event-table').sheetrock({
+      url: mySpreadsheet,
+      query: "select A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U where I = " + currentMonth + " and J = " + currentYear,
+      fetchSize: 10
+    });
 
+    /*
+    var monthEventsTemplate = Handlebars.compile($('#monthEvents-template').html());
     var d = new Date;
     //var currentDate = d.getDate();
     var currentMonth = d.getMonth() + 1;
@@ -163,7 +171,8 @@
       //fetchSize: 5,
       rowTemplate: monthEventsTemplate
     });
-    
+    */
+
     // Load today's events
     var todayEventsTemplate = Handlebars.compile($('#todayEvents-template').html());
 
