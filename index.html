@@ -57,12 +57,12 @@
             <th>Time</th>
             <th>Name</th>
             <th>Image</th>
-            <th>Address</th>
+            <th>Address (Click to go to Google Map)</th>
             <th>Category</th>
             <th>Language</th>
             <th>Organizer</th>
             <th>Price</th>
-            <th>Learn More</th>
+            <th>Go to Source</th>
           </tr>
         </thead>
           <script id="allEvents-template" type="text/x-handlebars-template">
@@ -81,8 +81,8 @@
               <td>{{cells.Language}}</td>
               <td>{{cells.Organizer}}</td>
               <td>{{cells.Free}}</td>
-              <td><a href="{{cells.LearnMoreLink}}">Learn More</a></td>
-            </tr>
+              <td><a href="{{cells.LearnMoreLink}}" target="_blank" title="Go to Source" class="btn btn-success">Learn More</a></td>
+              </tr>
           </script>
         </table>
       </div>
@@ -98,7 +98,7 @@
     var mySpreadsheet = 'https://docs.google.com/spreadsheets/d/1NptDuEELr9ZBcfXyd7B4CGFZ2oXjf8JFYpLCQXcc3aQ/edit#gid=0';
 
     var allEventsTemplate = Handlebars.compile($('#allEvents-template').html());
-    var allEventsQuery = "select A,B,C,D,E,K,L,M,N,P order by K";
+    var allEventsQuery = "select A,B,C,D,E,K,L,M,N,P,R order by K";
 
     // Desktop View
     $('#allEvents-table').sheetrock({
