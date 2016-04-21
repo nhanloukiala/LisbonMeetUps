@@ -9,12 +9,13 @@
     <script src="js/handlebars.min.js"></script>
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="css/normalize.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/github-light.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/sheetrock.css" media="screen">  
+ 
     <link rel="stylesheet" type="text/css" href="css/eventstyle.css" media="screen">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" media="screen"> 
     <!-- 
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/sheetrock.css" media="screen"> 
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css" media="screen">
     
     -->
@@ -65,20 +66,20 @@
         </thead>
           <script id="allEvents-template" type="text/x-handlebars-template">
             <tr class="event-row">
-              <td class="auto-fix">{{cells.Date}}</td>
-              <td class="auto-fix">{{cells.TimeStart}}-{{cells.TimeEnd}}</td>
-              <td class="auto-fix"><b>{{cells.Name}}</b></td>
-              <td class="auto-fix">
+              <td>{{cells.Date}}</td>
+              <td>{{cells.TimeStart}}-{{cells.TimeEnd}}</td>
+              <td><b>{{cells.Name}}</b></td>
+              <td>
                 {{#if cells.FeaturedImageUrl}}
                     <img class="displayed" src="{{cells.FeaturedImageUrl}}">
                 {{/if}}
               
               </td>
-              <td class="auto-fix">{{cells.Category}}</td>
-              <td class="auto-fix">{{cells.Language}}</td>
-              <td class="auto-fix">{{cells.Organizer}}</td>
-              <td class="auto-fix">{{cells.Free}}</td>
-              <td class="auto-fix"><a href="{{cells.LearnMoreLink}}">Learn More</a></td>
+              <td>{{cells.Category}}</td>
+              <td>{{cells.Language}}</td>
+              <td>{{cells.Organizer}}</td>
+              <td>{{cells.Free}}</td>
+              <td><a href="{{cells.LearnMoreLink}}">Learn More</a></td>
             </tr>
           </script>
         </table>
