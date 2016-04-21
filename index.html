@@ -49,10 +49,23 @@
       -->
       <div style="overflow-x:auto;">
         <table id="allEvents-table" class="table table-condensed table-striped">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Category</th>
+            <th>Language</th>
+            <th>Organizer</th>
+            <th>Free</th>
+            <th>Learn More</th>
+          </tr>
+        </thead>
           <script id="allEvents-template" type="text/x-handlebars-template">
             <tr>
               <td class="auto-fit">{{cells.Date}}</td>
-              <td class="auto-fit">{{cells.Start}}-{{cells.End}}</td>
+              <td class="auto-fit">{{cells.TimeStart}}-{{cells.TimeEnd}}</td>
               <td><b>{{cells.Name}}</b></td>
               <td>
                 {{#if cells.FeaturedImageUrl}}
@@ -78,19 +91,18 @@
 
   <script type="text/javascript">
 
-    $(document).ready(function() {
-    $('#allEvents-table').DataTable();
-    } );
-
     var mySpreadsheet = 'https://docs.google.com/spreadsheets/d/1NptDuEELr9ZBcfXyd7B4CGFZ2oXjf8JFYpLCQXcc3aQ/edit#gid=0';
- 
+
     var allEventsTemplate = Handlebars.compile($('#allEvents-template').html());
-    
+    var allEventsQuery = "select A,B,C,D,E,K,L,M,N,P order by K";
+
+    // Desktop View
     $('#allEvents-table').sheetrock({
       url: mySpreadsheet,
-      query: "select A,B,C,D,E,K,L,M,N,P order by K",
-      //fetchSize: 5,
-      rowTemplate: allEventsTemplate
+      query: allEventsQuery,
+      rowTemplate: allEventsTemplate,
+      //labels: ['Date', 'Start_Time', 'End_Time', 'City', 'Host', 'Map_Link', 'Tickets'],
+      headersOff: true
     });
 
     /*
