@@ -7,11 +7,13 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/sheetrock.min.js"></script>
     <script src="js/handlebars.min.js"></script>
+    <script src="js/bootstrap-formhelpers.min.js"></script>
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
- 
     <link rel="stylesheet" type="text/css" href="css/eventstyle.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" media="screen"> 
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-formhelpers.min.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/flag-icon.css" media="screen">
     <!-- 
     <link rel="stylesheet" type="text/css" href="css/normalize.css" media="screen">
     <link rel="stylesheet" type="text/css" href="css/github-light.css" media="screen">
@@ -74,11 +76,11 @@
                 {{#if cells.FeaturedImageUrl}}
                     <img class="displayed" src="{{cells.FeaturedImageUrl}}">
                 {{/if}}
-              
               </td>
               <td><a href="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q={{cells.Address}}" target="_blank" title="View on Google Maps">{{cells.Address}}</a></td>
               <td>{{cells.Category}}</td>
-              <td>{{cells.Language}}</td>
+              <td><div class="flag-icon flag-icon-{{cells.Language}}"></div></td>
+              <!--<td>{{cells.Language}}</td>-->
               <td>{{cells.Organizer}}</td>
               <td>{{cells.Free}}</td>
               <td><a href="{{cells.LearnMoreLink}}" target="_blank" title="Go to Source" class="btn btn-success">Learn More</a></td>
@@ -98,7 +100,7 @@
     var mySpreadsheet = 'https://docs.google.com/spreadsheets/d/1NptDuEELr9ZBcfXyd7B4CGFZ2oXjf8JFYpLCQXcc3aQ/edit#gid=0';
 
     var allEventsTemplate = Handlebars.compile($('#allEvents-template').html());
-    var allEventsQuery = "select A,B,C,D,E,K,L,M,N,P,R order by K";
+    var allEventsQuery = "select A,B,C,D,E,K,L,M,N,P,R order by K ASC";
 
     // Desktop View
     $('#allEvents-table').sheetrock({
@@ -106,7 +108,7 @@
       query: allEventsQuery,
       rowTemplate: allEventsTemplate,
       //labels: ['Date', 'Start_Time', 'End_Time', 'City', 'Host', 'Map_Link', 'Tickets'],
-      headersOff: true
+      //headersOff: true
     });
 
     /*
