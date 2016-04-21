@@ -8,14 +8,15 @@
     <script src="js/sheetrock.min.js"></script>
     <script src="js/handlebars.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="css/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/normalize.css" media="screen">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" media="screen">
     <link rel="stylesheet" type="text/css" href="css/github-light.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/sheetrock.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/sheetrock.css" media="screen">  
+    <link rel="stylesheet" type="text/css" href="css/eventstyle.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" media="screen"> 
+    <!-- 
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css" media="screen">
     
-    <!--
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" media="screen">
     -->
   </head>
   <body>
@@ -58,14 +59,14 @@
             <th>Category</th>
             <th>Language</th>
             <th>Organizer</th>
-            <th>Free</th>
+            <th>Price</th>
             <th>Learn More</th>
           </tr>
         </thead>
           <script id="allEvents-template" type="text/x-handlebars-template">
-            <tr>
-              <td class="auto-fit">{{cells.Date}}</td>
-              <td class="auto-fit">{{cells.TimeStart}}-{{cells.TimeEnd}}</td>
+            <tr class="event-row">
+              <td>{{cells.Date}}</td>
+              <td>{{cells.TimeStart}}-{{cells.TimeEnd}}</td>
               <td><b>{{cells.Name}}</b></td>
               <td>
                 {{#if cells.FeaturedImageUrl}}
@@ -73,11 +74,11 @@
                 {{/if}}
               
               </td>
-              <td class="auto-fit">{{cells.Category}}</td>
-              <td class="auto-fit">{{cells.Language}}</td>
-              <td class="auto-fit">{{cells.Organizer}}</td>
-              <td class="auto-fit">{{cells.Free}}</td>
-              <td class="auto-fit"><a href="{{cells.LearnMoreLink}}">Learn More</a></td>
+              <td>{{cells.Category}}</td>
+              <td>{{cells.Language}}</td>
+              <td>{{cells.Organizer}}</td>
+              <td>{{cells.Free}}</td>
+              <td><a href="{{cells.LearnMoreLink}}">Learn More</a></td>
             </tr>
           </script>
         </table>
