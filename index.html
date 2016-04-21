@@ -57,6 +57,7 @@
             <th>Time</th>
             <th>Name</th>
             <th>Image</th>
+            <th>Address</th>
             <th>Category</th>
             <th>Language</th>
             <th>Organizer</th>
@@ -75,6 +76,7 @@
                 {{/if}}
               
               </td>
+              <td><a href="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q={{cells.Address}}" target="_blank" title="View on Google Maps">{{cells.Address}}</a></td>
               <td>{{cells.Category}}</td>
               <td>{{cells.Language}}</td>
               <td>{{cells.Organizer}}</td>
