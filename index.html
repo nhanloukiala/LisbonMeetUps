@@ -51,8 +51,13 @@
             <tr>
               <td class="auto-fit">{{cells.Date}}</td>
               <td class="auto-fit">{{cells.Start}}-{{cells.End}}</td>
-              <td><b>{{cells.Name}}</td>
-              <td><img class="displayed" src="{{cells.FeaturedImageUrl}}"></b></td>
+              <td><b>{{cells.Name}}</b></td>
+              <td>
+                {{#if cells.FeaturedImageUrl}}
+                    <img class="displayed" src="{{cells.FeaturedImageUrl}}">
+                {{/if}}
+              
+              </td>
               <td class="auto-fit">{{cells.Category}}</td>
               <td class="auto-fit">{{cells.Language}}</td>
               <td class="auto-fit">{{cells.Organizer}}</td>
@@ -63,7 +68,6 @@
         </table>
       </div>
 
-      -->
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/danielng188/LisbonMeetUps">Lisbonmeetups</a> is designed by <a href="https://github.com/danielng188">danielng188</a>.</span>
       </footer>
@@ -71,6 +75,11 @@
     </section>
 
   <script type="text/javascript">
+
+    $(document).ready(function() {
+    $('#allEvents-table').DataTable();
+    } );
+
     var mySpreadsheet = 'https://docs.google.com/spreadsheets/d/1NptDuEELr9ZBcfXyd7B4CGFZ2oXjf8JFYpLCQXcc3aQ/edit#gid=0';
  
     var allEventsTemplate = Handlebars.compile($('#allEvents-template').html());
