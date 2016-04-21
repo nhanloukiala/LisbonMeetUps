@@ -8,11 +8,16 @@
       margin-right: auto
     }
 
-.main-content table tr td {
+.main-content table tr td .auto-fit {
     white-space: nowrap;}
 
 #allEvents-table thead tr.event-row {
   display: none;
+}
+
+.main-content table th {
+    background-color: #4CAF50;
+    color: white;
 }
 
 * {

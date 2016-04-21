@@ -65,20 +65,20 @@
         </thead>
           <script id="allEvents-template" type="text/x-handlebars-template">
             <tr class="event-row">
-              <td>{{cells.Date}}</td>
-              <td>{{cells.TimeStart}}-{{cells.TimeEnd}}</td>
-              <td><b>{{cells.Name}}</b></td>
-              <td>
+              <td class="auto-fix">{{cells.Date}}</td>
+              <td class="auto-fix">{{cells.TimeStart}}-{{cells.TimeEnd}}</td>
+              <td class="auto-fix"><b>{{cells.Name}}</b></td>
+              <td class="auto-fix">
                 {{#if cells.FeaturedImageUrl}}
                     <img class="displayed" src="{{cells.FeaturedImageUrl}}">
                 {{/if}}
               
               </td>
-              <td>{{cells.Category}}</td>
-              <td>{{cells.Language}}</td>
-              <td>{{cells.Organizer}}</td>
-              <td>{{cells.Free}}</td>
-              <td><a href="{{cells.LearnMoreLink}}">Learn More</a></td>
+              <td class="auto-fix">{{cells.Category}}</td>
+              <td class="auto-fix">{{cells.Language}}</td>
+              <td class="auto-fix">{{cells.Organizer}}</td>
+              <td class="auto-fix">{{cells.Free}}</td>
+              <td class="auto-fix"><a href="{{cells.LearnMoreLink}}">Learn More</a></td>
             </tr>
           </script>
         </table>
