@@ -1,12 +1,24 @@
 img.displayed  {
-      width: 150px;
+	width: 150px;
   }
 
+/*
 table th {
     background-color: #4CAF50;
     color: white;
 }
+*/
 
 thead tr.header-row {
-  display: none;
+	display: none;
+}
+
+.short-description {
+	/*white-space: nowrap;*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+td a {
+    display: inline-block;
 }

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="js/jquery.min.js"></script>
     <script src="js/sheetrock.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script src="js/handlebars.min.js"></script>
     <script src="js/bootstrap-formhelpers.min.js"></script>
 
@@ -14,7 +15,9 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" media="screen">
     <link rel="stylesheet" type="text/css" href="css/bootstrap-formhelpers.min.css" media="screen">
     <link rel="stylesheet" type="text/css" href="css/flag-icon.css" media="screen">
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    
     <!-- 
     <link rel="stylesheet" type="text/css" href="css/normalize.css" media="screen">
     <link rel="stylesheet" type="text/css" href="css/github-light.css" media="screen">
@@ -31,66 +34,52 @@
     </section>
 
     <section class="main-content">
-
-      <!--
-      <h2>TODAY's EVENTS</h2>
-        <ol id="todayEvents">
-          <script id="todayEvents-template" type="text/x-handlebars-template">
-
-          </script>
-        </ol>
-      
-      <h2>THIS MONTH's EVENTS</h2>
-      <table id="event-table" class="table table-condensed table-striped"></table>
-        <ol id="monthEvents">
-          <script id="monthEvents-template" type="text/x-handlebars-template">
-            
-          </script>
-        </ol>
-      -->
-      <h2>ALL EVENTS</h2>
-      <!--
-      <table id="allEvents-table" class="table table-condensed table-striped"></table>
-      -->
-      <div class="table-responsive">
-        <table id="allEvents-table" class="table table-condensed table-striped">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Time</th>
-              <th>Name</th>
-              <th>Image</th>
-              <th>Address (Click to go to Google Map)</th>
-              <th>Category</th>
-              <th>Language</th>
-              <th>Organizer</th>
-              <th>Price</th>
-              <th>Go to Source</th>
-            </tr>
-          </thead>
-          <script id="allEvents-template" type="text/x-handlebars-template">
-            <tr class="header-row">
-              <td>{{cells.Date}}</td>
-              <td>{{cells.TimeStart}}-{{cells.TimeEnd}}</td>
-              <td><b>{{cells.Name}}</b></td>
-              <td>
-                {{#if cells.FeaturedImageUrl}}
-                    <img class="displayed" src="{{cells.FeaturedImageUrl}}">
-                {{/if}}
-              </td>
-              <td><a href="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q={{cells.Address}}" target="_blank" title="View on Google Maps">{{cells.Address}}</a></td>
-              <td>{{cells.Category}}</td>
-              <td>
-                <span class="flag-icon flag-icon-{{cells.Language}}"></span>
-              </td>
-              <!--<td>{{cells.Language}}</td>-->
-              <td>{{cells.Organizer}}</td>
-              <td>{{cells.Free}}</td>
-              <td><a href="{{cells.LearnMoreLink}}" target="_blank" title="Go to Source" class="btn btn-success">Learn More</a></td>
-            </tr>
-          </script>
-        </table>
+    <!--
+      <div id="monthHeadline">
+        <script id="monthHeadline-template" type="text/x-handlebars-template">
+          <h2>{{cells.Month}} EVENTS</h2>
+        </script>
       </div>
+    -->
+    <h2>April</h2>
+        <div class="table-responsive">
+          <table id="monthEvents-table" class="table table-condensed table-striped">
+            <!--
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Address (Click to go to Google Map)</th>
+                <th>Category</th>
+                <th>Language</th>
+                <th>Organizer</th>
+                <th>Price</th>
+                <th>Go to Source</th>
+              </tr>
+            </thead>
+            -->
+            <script id="monthEvents-template" type="text/x-handlebars-template">
+              <tr class="header-row">
+                <td>{{cells.Language}}</td>
+                <td>{{cells.Weekday}}</td>
+                <td>{{cells.TimeStart}}-{{cells.TimeEnd}}</td>
+                <td>{{cells.Free}}</td>
+                <td><a href="{{cells.LearnMoreLink}}" target="_blank" title="Go to Event"><b>{{cells.Name}}</b></a></td>
+                <td>{{cells.Organizer}}</td>
+                <td><a href="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q={{cells.Address}}" target="_blank" title="{{cells.Address}}"><i class="fa fa-map-marker" style="font-size:24px"></i></a></td>
+                <td class="short-description">{{cells.ShortDescription}}</td>
+                <td>
+                  <a href="#" target="_blank" title=""><i class="fa fa-facebook-official" style="font-size:24px"></i></a>
+                  <a href="#" target="_blank" title=""><i class="fa fa-facebook-official" style="font-size:24px"></i></a>
+                  <a href="#" target="_blank" title=""><i class="fa fa-facebook-official" style="font-size:24px"></i></a>
+                </td>
+              </tr>
+            </script>
+          </table>
+        </div>
+
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/danielng188/LisbonMeetUps">Lisbonmeetups</a> is designed by <a href="https://github.com/danielng188">danielng188</a>.</span>
@@ -100,16 +89,33 @@
 
   <script type="text/javascript">
 
-    var mySpreadsheet = 'https://docs.google.com/spreadsheets/d/1S3ihmrLozc0iHvprtHxSnmnUoZ624qOAKuuk2t-LYN8/edit#gid=0';
+    var mySpreadsheet = 'https://docs.google.com/spreadsheets/d/1NptDuEELr9ZBcfXyd7B4CGFZ2oXjf8JFYpLCQXcc3aQ/edit#gid=0';
+    
+    var d = new Date;
+    //var currentDate = d.getDate();
+    var currentMonth = d.getMonth() + 1;
+    var currentYear = d.getFullYear();
 
-    var allEventsTemplate = Handlebars.compile($('#allEvents-template').html());
-    var allEventsQuery = "select A,B,C,D,E,K,L,M,N,P,R order by K ASC";
+    var monthEventsTemplate = Handlebars.compile($('#monthEvents-template').html());
+    var monthEventsQuery = "select A,B,C,D,E,I,J,K,L,M,N,O,R,S,T,U,V where S = " + currentMonth + " and T = " + currentYear + " order by I ASC";  
 
     // Desktop View
-    $('#allEvents-table').sheetrock({
+    $('#monthEvents-table').sheetrock({
       url: mySpreadsheet,
-      query: allEventsQuery,
-      rowTemplate: allEventsTemplate,
+      query: monthEventsQuery,
+      rowTemplate: monthEventsTemplate,
+      //labels: ['Date', 'Start_Time', 'End_Time', 'City', 'Host', 'Map_Link', 'Tickets'],
+      //headersOff: true
+    });
+
+    var monthHeadlineTemplate = Handlebars.compile($('#monthHeadline-template').html());
+    var monthHeadlineQuery = "select I";
+
+    // Desktop View
+    $('#monthHeadline').sheetrock({
+      url: mySpreadsheet,
+      query: monthHeadlineQuery,
+      rowTemplate: monthHeadlineTemplate,
       //labels: ['Date', 'Start_Time', 'End_Time', 'City', 'Host', 'Map_Link', 'Tickets'],
       //headersOff: true
     });
@@ -125,7 +131,6 @@
       query: "select A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U where I = " + currentMonth + " and J = " + currentYear,
       fetchSize: 10
     });
-
     
     var monthEventsTemplate = Handlebars.compile($('#monthEvents-template').html());
     var d = new Date;
@@ -140,16 +145,6 @@
       rowTemplate: monthEventsTemplate
     });
     
-
-    // Load today's events
-    var todayEventsTemplate = Handlebars.compile($('#todayEvents-template').html());
-
-    $('#todayEvents').sheetrock({
-      url: mySpreadsheet,
-      query: "select A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U where K = U",
-      //fetchSize: 5,
-      rowTemplate: todayEventsTemplate
-    });
     */
   </script>
 
