@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" media="screen">
     <link rel="stylesheet" type="text/css" href="css/bootstrap-formhelpers.min.css" media="screen">
     <link rel="stylesheet" type="text/css" href="css/flag-icon.css" media="screen">
+
     <!-- 
     <link rel="stylesheet" type="text/css" href="css/normalize.css" media="screen">
     <link rel="stylesheet" type="text/css" href="css/github-light.css" media="screen">
@@ -26,7 +27,7 @@
     <section class="page-header">
       <h1 class="project-name">Lisbon Meetups</h1>
       <h2 class="project-tagline">A website project that lists events in Lisbon</h2>
-      <a href="https://github.com/danielng188/LisbonMeetUps" class="btn">View on GitHub</a>
+      <a href="https://github.com/danielng188/LisbonMeetUps" class="btn btn-primary">View on GitHub</a>
     </section>
 
     <section class="main-content">
@@ -51,24 +52,24 @@
       <!--
       <table id="allEvents-table" class="table table-condensed table-striped"></table>
       -->
-      <div style="overflow-x:auto;">
+      <div class="table-responsive">
         <table id="allEvents-table" class="table table-condensed table-striped">
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Name</th>
-            <th>Image</th>
-            <th>Address (Click to go to Google Map)</th>
-            <th>Category</th>
-            <th>Language</th>
-            <th>Organizer</th>
-            <th>Price</th>
-            <th>Go to Source</th>
-          </tr>
-        </thead>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Name</th>
+              <th>Image</th>
+              <th>Address (Click to go to Google Map)</th>
+              <th>Category</th>
+              <th>Language</th>
+              <th>Organizer</th>
+              <th>Price</th>
+              <th>Go to Source</th>
+            </tr>
+          </thead>
           <script id="allEvents-template" type="text/x-handlebars-template">
-            <tr class="event-row">
+            <tr class="header-row">
               <td>{{cells.Date}}</td>
               <td>{{cells.TimeStart}}-{{cells.TimeEnd}}</td>
               <td><b>{{cells.Name}}</b></td>
@@ -79,12 +80,14 @@
               </td>
               <td><a href="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q={{cells.Address}}" target="_blank" title="View on Google Maps">{{cells.Address}}</a></td>
               <td>{{cells.Category}}</td>
-              <td><div class="flag-icon flag-icon-{{cells.Language}}"></div></td>
+              <td>
+                <span class="flag-icon flag-icon-{{cells.Language}}"></span>
+              </td>
               <!--<td>{{cells.Language}}</td>-->
               <td>{{cells.Organizer}}</td>
               <td>{{cells.Free}}</td>
               <td><a href="{{cells.LearnMoreLink}}" target="_blank" title="Go to Source" class="btn btn-success">Learn More</a></td>
-              </tr>
+            </tr>
           </script>
         </table>
       </div>
@@ -97,7 +100,7 @@
 
   <script type="text/javascript">
 
-    var mySpreadsheet = 'https://docs.google.com/spreadsheets/d/1NptDuEELr9ZBcfXyd7B4CGFZ2oXjf8JFYpLCQXcc3aQ/edit#gid=0';
+    var mySpreadsheet = 'https://docs.google.com/spreadsheets/d/1S3ihmrLozc0iHvprtHxSnmnUoZ624qOAKuuk2t-LYN8/edit#gid=0';
 
     var allEventsTemplate = Handlebars.compile($('#allEvents-template').html());
     var allEventsQuery = "select A,B,C,D,E,K,L,M,N,P,R order by K ASC";
