@@ -17,7 +17,7 @@
     <link rel="stylesheet" type="text/css" href="css/flag-icon.css" media="screen">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-    
+
     <!-- 
     <link rel="stylesheet" type="text/css" href="css/normalize.css" media="screen">
     <link rel="stylesheet" type="text/css" href="css/github-light.css" media="screen">
@@ -65,7 +65,7 @@
                 <td>{{cells.Language}}</td>
                 <td>{{cells.Weekday}}</td>
                 <td>{{cells.TimeStart}}-{{cells.TimeEnd}}</td>
-                <td>{{cells.Free}}</td>
+                <td>{{#if cells.Free}}<i class="fa fa-euro" style="font-size:24px"></i>{{/if}}</td>
                 <td><a href="{{cells.LearnMoreLink}}" target="_blank" title="Go to Event"><b>{{cells.Name}}</b></a></td>
                 <td>{{cells.Organizer}}</td>
                 <td><a href="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q={{cells.Address}}" target="_blank" title="{{cells.Address}}"><i class="fa fa-map-marker" style="font-size:24px"></i></a></td>
